@@ -23,42 +23,79 @@ const SavedCandidates = () => {
     setSavedCandidates(updatedSavedCandidates);
     localStorage.setItem('savedCandidates', JSON.stringify(updatedSavedCandidates));
   };
-  return (
-    <div className="potential-container">
-      <h1 className="center-text" >Potential Candidates</h1>
-      <table className='table-container'>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Email</th>
-            <th>Company</th>
-            <th>Reject</th>
-          </tr>
-        </thead>
-        <tbody>
+ const savedCandidatesData=()=>{ return (
+   <div className="potential-container">
+     <h1 className="center-text">Potential Candidates</h1>
+     <div className="table-container">
+       <table>
+         <thead>
+           <tr>
+             <th>Image</th>
+             <th>Name</th>
+             <th>Location</th>
+             <th>Email</th>
+             <th>Company</th>
+             <th>Reject</th>
+           </tr>
+         </thead>
+         <tbody>
+           {savedCandidates.map((candidate) => (
+             <tr key={candidate.login}>
+               <td>
+                 <img
+                   src={candidate.avatar_url}
+                   alt={`${candidate.name}'s avatar`}
+                   width="50"
+                 />
+               </td>
+               <td>{candidate.name}</td>
+               <td>{candidate.location}</td>
+               <td>{candidate.email}</td>
+               <td>{candidate.company}</td>
+               <td>
+                 <button
+                   className="icon-button"
+                   onClick={() => removeFromSaved(candidate)}
+                 >
+                   <svg
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     strokeWidth="2"
+                     strokeLinecap="round"
+                     strokeLinejoin="round"
+                     className="feather feather-minus-circle"
+                   >
+                     <circle cx="12" cy="12" r="10" fill="red"></circle>
+                     <line x1="8" y1="12" x2="16" y2="12"></line>
+                   </svg>
+                 </button>
+               </td>
+             </tr>
+           ))}
+         </tbody>
+       </table>
+       </div>
+       <div className="list-container">
           {savedCandidates.map((candidate) => (
-            <tr key={candidate.login}>
-              <td><img src={candidate.avatar_url} alt={`${candidate.name}'s avatar`} width="50" /></td>
-              <td>{candidate.name}</td>
-              <td>{candidate.location}</td>
-              <td>{candidate.email}</td>
-              <td>{candidate.company}</td>
-                           <td>
-                <button className="icon-button" onClick={() => removeFromSaved(candidate)}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-minus-circle">
-                    <circle cx="12" cy="12" r="10" fill="red"></circle>
-                    <line x1="8" y1="12" x2="16" y2="12"></line>
-                  </svg>
-                </button>
-              </td>
-            </tr>
+            <div key={candidate.login} className="list-item">
+              <img src={candidate.avatar_url} alt={`${candidate.name}'s avatar`} width="50" />
+              <p><strong>Name:</strong> {candidate.name}</p>
+              <p><strong>Location:</strong> {candidate.location}</p>
+              <p><strong>Email:</strong> {candidate.email}</p>
+              <p><strong>Company:</strong> {candidate.company}</p>
+              <button onClick={() => removeFromSaved(candidate)}>Reject</button>
+            </div>
           ))}
-        </tbody>
-      </table>
-    </div>
-  );
+     </div>
+   </div>
+ );
 };
+return savedCandidatesData();
+};
+
 
 export default SavedCandidates;

@@ -86,12 +86,12 @@ main {
 
 tr {
   border-radius: 10px;
-  background-color: #000;
+  background-color: #362828;
   color: white;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #333333;
+  background-color: #4ac2c6;
 }
 
 .nav {
@@ -123,9 +123,15 @@ tbody tr:nth-child(odd) {
   font-weight: 700;
 }
 
-.table {
-  width: 80vw;
-  table-layout: fixed;
+table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
 }
 
 .candidate-container {
@@ -163,6 +169,16 @@ tbody tr:nth-child(odd) {
   fill: gray;
 }
 
+.list-container {
+  display: none;
+  width: 100%;
+}
+
+.list-item {
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-bottom: 8px;
+}
 @media (max-width: 600px) {
   .potential-container {
     padding: 10px;
@@ -170,6 +186,9 @@ tbody tr:nth-child(odd) {
 
   th, td {
     padding: 4px;
+    text-align: left;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
   }
 
   .center-text {
@@ -178,6 +197,13 @@ tbody tr:nth-child(odd) {
 
   h1 {
     font-size: 1.5em;
+  }
+  .table-container {
+    display: none;
+  }
+
+  .list-container {
+    display: block;
   }
 }
 
@@ -188,6 +214,13 @@ tbody tr:nth-child(odd) {
 
   h1 {
     font-size: 2em;
+  }
+  .table-container {
+    display: block;
+  }
+
+  .list-container {
+    display: none;
   }
 }
 
