@@ -26,7 +26,7 @@ const SavedCandidates = () => {
   return (
     <div className="potential-container">
       <h1 className="center-text" >Potential Candidates</h1>
-      <table>
+      <table className='table-container'>
         <thead>
           <tr>
             <th>Image</th>
