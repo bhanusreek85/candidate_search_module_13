@@ -145,18 +145,50 @@ tbody tr:nth-child(odd) {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  overflow-x: auto;
 }
 .center-text {
   text-align: center;
 }
 
-
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
 .icon-button.disabled {
   cursor: not-allowed;
 }
 
 .icon-button.disabled svg circle {
   fill: gray;
+}
+
+@media (max-width: 600px) {
+  .potential-container {
+    padding: 10px;
+  }
+
+  th, td {
+    padding: 4px;
+  }
+
+  .center-text {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-width: 601px) {
+  .center-text {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
 }
 
 
